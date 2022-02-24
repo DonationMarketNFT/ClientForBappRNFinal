@@ -1,12 +1,14 @@
 import react from "react";
-import { View, Text, FlatList, ScrollView} from 'react-native';
+import { View, Text, FlatList, ScrollView, Image, TouchableOpacity} from 'react-native';
+import {images} from '../../constants'
 
-
-export const RenderCampaign= ({campaignName, data, color}) =>{
+export const RenderCampaign= ({campaignName, data, navigation}) =>{
     const renderFlatListItem = ({item}) =>(
-        <View style={{width:280,height:200, margin:16, backgroundColor: color ? color : 'pink',borderRadius:5,alignItems:'center',justifyContent:'center'}}>
-            <Text>{item}</Text>
-        </View>
+        <TouchableOpacity 
+            onPress={()=>navigation.navigate('ViewCampaignDetail')}
+            style={{width:280,height:200, margin:16, borderRadius:5,alignItems:'center',justifyContent:'center'}}>
+            <Image resizeMode='contain' source={images['img'+item.toString()]} style={{width:280,height:200,borderRadius:20}}/>
+        </TouchableOpacity>
     )
 return(
     <View style={{height:200}}>
